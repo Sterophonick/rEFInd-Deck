@@ -346,6 +346,7 @@ typedef struct {
    UINTN            RequestedScreenHeight;
    UINTN            BannerBottomEdge;
    UINTN            RequestedTextMode;
+   UINTN            SkipVidModeWarning;
    UINTN            Timeout;
    UINTN            HideUIFlags;
    UINTN            MaxTags;     // max. number of OS entries to show simultaneously in graphics mode

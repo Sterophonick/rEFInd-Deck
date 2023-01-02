@@ -751,6 +751,9 @@ VOID ReadConfig(CHAR16 *FileName)
                     GlobalConfig.RequestedScreenHeight = 0;
             }
 
+        } else if (MyStriCmp(TokenList[0], L"skipvidmodewarning")) {
+            HandleInt(TokenList, TokenCount, &(GlobalConfig.SkipVidModeWarning));
+
         } else if (MyStriCmp(TokenList[0], L"screensaver")) {
             HandleInt(TokenList, TokenCount, &(GlobalConfig.ScreensaverTime));
 
