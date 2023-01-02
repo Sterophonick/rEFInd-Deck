@@ -1,3 +1,5 @@
+Cloned from https://sourceforge.net/p/refind/code/ci/master/tree/
+
 rEFInd-Deck
 ================================================
 A modifcation of rEFInd designed for Steam Deck:
