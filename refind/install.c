@@ -93,8 +93,8 @@ static REFIT_VOLUME *PickOneESP(ESP_LIST *AllESPs) {
     MENU_STYLE_FUNC     Style = TextMenuStyle;
     REFIT_MENU_ENTRY    *ChosenOption, *MenuEntryItem = NULL;
     REFIT_MENU_SCREEN   InstallMenu = { L"Install rEFInd", NULL, 0, NULL, 0, NULL, 0, NULL,
-                                        L"Select a destination and press Enter or",
-                                        L"press Esc to return to main menu without changes" };
+                                        L"Select a destination and press (A) or",
+                                        L"press (B) to return to main menu without changes" };
 
     LOG(2, LOG_LINE_NORMAL, L"Prompting user to select an ESP for installation");
     if (AllowGraphicsMode)
@@ -788,13 +788,13 @@ static UINTN PickOneBootOption(IN BOOT_ENTRY_LIST *Entries, IN OUT UINTN *BootOr
     MENU_STYLE_FUNC     Style = TextMenuStyle;
     REFIT_MENU_ENTRY    *ChosenOption, *MenuEntryItem = NULL;
     REFIT_MENU_SCREEN   Menu = { L"Manage EFI Boot Order", NULL, 0, NULL, 0, NULL, 0, NULL,
-                                 L"Select an option and press Enter to make it the default, press '-' or",
-                                 L"Delete to delete it, or Esc to return to main menu without changes" };
+                                 L"Select an option and press (A) to make it the default, press '-' or",
+                                 L"Delete to delete it, or (B) to return to main menu without changes" };
     if (AllowGraphicsMode)
         Style = GraphicsMenuStyle;
 
     if (Entries) {
-        AddMenuInfoLine(&Menu, L"Select an option and press Enter to make it the default or '-' to delete it");
+        AddMenuInfoLine(&Menu, L"Select an option and press (A) to make it the default or '-' to delete it");
         while (Entries != NULL) {
             MenuEntryItem = AllocateZeroPool(sizeof(REFIT_MENU_ENTRY));
             FindVolumeAndFilename(Entries->BootEntry.DevPath, &Volume, &Filename);

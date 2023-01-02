@@ -299,7 +299,7 @@ BOOLEAN egSetScreenSize(IN OUT UINTN *ScreenWidth, IN OUT UINTN *ScreenHeight) {
             egScreenWidth = *ScreenWidth;
             egScreenHeight = *ScreenHeight;
         } else {// If unsuccessful, display an error message for the user....
-            SwitchToText(FALSE);
+            /*SwitchToText(FALSE);
             Print(L"Error setting graphics mode %d x %d; using default mode!\nAvailable modes are:\n",
                   *ScreenWidth, *ScreenHeight);
             LOG(1, LOG_LINE_NORMAL, L"Error setting graphics mode %d x %d; using default mode!",
@@ -320,7 +320,7 @@ BOOLEAN egSetScreenSize(IN OUT UINTN *ScreenWidth, IN OUT UINTN *ScreenHeight) {
                     } // if
                 } // else
             } while (++ModeNum < GraphicsOutput->Mode->MaxMode);
-            PauseForKey();
+            PauseForKey(); */ //comment out the part where it halts because i hate it
             SwitchToGraphics();
         } // if GOP mode (UEFI)
 
