@@ -299,31 +299,28 @@ BOOLEAN egSetScreenSize(IN OUT UINTN *ScreenWidth, IN OUT UINTN *ScreenHeight) {
             egScreenWidth = *ScreenWidth;
             egScreenHeight = *ScreenHeight;
         } else {// If unsuccessful, display an error message for the user....
-            if(!GlobalConfig.SkipVidModeWarning) //If config setting is set, skip this warning. Good for users who Nintendo Switch their Deck.
-            {
-                SwitchToText(FALSE);
-                Print(L"Error setting graphics mode %d x %d; using default mode!\nAvailable modes are:\n",
-                    *ScreenWidth, *ScreenHeight);
-                LOG(1, LOG_LINE_NORMAL, L"Error setting graphics mode %d x %d; using default mode!",
-                    *ScreenWidth, *ScreenHeight)
-                LOG(1, LOG_LINE_NORMAL, L"Available modes are:");
-                ModeNum = 0;
-                do {
-                    Status = refit_call4_wrapper(GraphicsOutput->QueryMode,
-                                                GraphicsOutput, ModeNum, &Size, &Info);
-                    if (!EFI_ERROR(Status) && (Info != NULL)) {
-                        Print(L"Mode %d: %d x %d\n", ModeNum,
-                            Info->HorizontalResolution, Info->VerticalResolution);
-                        LOG(1, LOG_LINE_NORMAL, L"  Mode %d: %d x %d", ModeNum,
-                            Info->HorizontalResolution, Info->VerticalResolution);
-                        if (ModeNum == CurrentModeNum) {
-                            egScreenWidth = Info->HorizontalResolution;
-                            egScreenHeight = Info->VerticalResolution;
-                        } // if
-                    } // else
-                } while (++ModeNum < GraphicsOutput->Mode->MaxMode);
-                PauseForKey();
-            }
+            SwitchToText(FALSE);
+            Print(L"Error setting graphics mode %d x %d; using default mode!\nAvailable modes are:\n",
+                  *ScreenWidth, *ScreenHeight);
+            LOG(1, LOG_LINE_NORMAL, L"Error setting graphics mode %d x %d; using default mode!",
+                *ScreenWidth, *ScreenHeight)
+            LOG(1, LOG_LINE_NORMAL, L"Available modes are:");
+            ModeNum = 0;
+            do {
+                Status = refit_call4_wrapper(GraphicsOutput->QueryMode,
+                                             GraphicsOutput, ModeNum, &Size, &Info);
+                if (!EFI_ERROR(Status) && (Info != NULL)) {
+                    Print(L"Mode %d: %d x %d\n", ModeNum,
+                          Info->HorizontalResolution, Info->VerticalResolution);
+                    LOG(1, LOG_LINE_NORMAL, L"  Mode %d: %d x %d", ModeNum,
+                        Info->HorizontalResolution, Info->VerticalResolution);
+                    if (ModeNum == CurrentModeNum) {
+                        egScreenWidth = Info->HorizontalResolution;
+                        egScreenHeight = Info->VerticalResolution;
+                    } // if
+                } // else
+            } while (++ModeNum < GraphicsOutput->Mode->MaxMode);
+            PauseForKey();
             SwitchToGraphics();
         } // if GOP mode (UEFI)
 

@@ -344,7 +344,7 @@ VOID PauseForKey(VOID)
     UINTN index;
 
     Print(L"\n");
-    PrintUglyText(L"* Press any button to continue *", BOTTOM);
+    PrintUglyText(L"* Hit any key to continue *", BOTTOM);
 
     if (ReadAllKeyStrokes()) {  // remove buffered key strokes
         refit_call1_wrapper(BS->Stall, 5000000);     // 5 seconds delay
