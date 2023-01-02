@@ -1,3 +1,12 @@
+rEFInd-Deck
+================================================
+A modifcation of rEFInd designed for Steam Deck:
+ - Skips the modesetting warning when docked if the resolution in refind.conf is set to 1280 800
+ - Adds proper tooltips for buttons.
+ - Adds a little silly.
+
+It's not all too special but it just makes rEFInd a little bit nicer.
+
 Brief Installation Instructions (Binary Package)
 ================================================
 
