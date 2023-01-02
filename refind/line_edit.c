@@ -62,7 +62,7 @@ BOOLEAN line_edit(CHAR16 *line_in, CHAR16 **line_out, UINTN x_max) {
     DrawScreenHeader(L"Line Editor");
     refit_call3_wrapper(ST->ConOut->SetCursorPosition, ST->ConOut, (ConWidth - 71) / 2, ConHeight - 1);
     refit_call2_wrapper(ST->ConOut->OutputString, ST->ConOut,
-                        L"Use cursor keys to edit, Esc to exit, Enter to boot with edited options");
+                        L"Use the D-Pad to edit, (B) to exit, (A) to boot with edited options");
 
     if (!line_in)
         line_in = L"";
