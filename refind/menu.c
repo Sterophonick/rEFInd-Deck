@@ -1452,7 +1452,7 @@ VOID DisplaySimpleMessage(CHAR16* Title, CHAR16 *Message) {
     INTN                DefaultEntry = 0;
     REFIT_MENU_ENTRY    *ChosenOption;
     REFIT_MENU_SCREEN   HideItemMenu = { NULL, NULL, 0, NULL, 0, NULL, 0, NULL,
-                                         L"Press Enter to return to main menu", L"" };
+                                         L"Press (A) to return to main menu", L"" };
 
     LOG(3, LOG_LINE_NORMAL, L"Entering DisplaySimpleMessage()");
     if (!Message)
@@ -1529,8 +1529,8 @@ VOID ManageHiddenTags(VOID) {
     MENU_STYLE_FUNC     Style = TextMenuStyle;
     REFIT_MENU_ENTRY    *ChosenOption, *MenuEntryItem = NULL;
     REFIT_MENU_SCREEN   HideItemMenu = { L"Manage Hidden Tags Menu", NULL, 0, NULL, 0, NULL, 0, NULL,
-                                         L"Select an option and press Enter or",
-                                         L"press Esc to return to main menu without changes" };
+                                         L"Select an option and press (A) or",
+                                         L"press (B) to return to main menu without changes" };
     UINTN               MenuExit, i = 0;
     BOOLEAN             SaveTags, SaveTools, SaveLegacy = FALSE, SaveFirmware = FALSE;
 
@@ -1554,7 +1554,7 @@ VOID ManageHiddenTags(VOID) {
     if (HiddenFirmware && (HiddenFirmware[0] != L'\0'))
         MergeStrings(&AllTags, HiddenFirmware, L',');
     if ((AllTags) && (StrLen(AllTags) > 0)) {
-        AddMenuInfoLine(&HideItemMenu, L"Select a tag and press Enter to restore it");
+        AddMenuInfoLine(&HideItemMenu, L"Select a tag and press (A) to restore it");
         while ((OneElement = FindCommaDelimited(AllTags, i++)) != NULL) {
             MenuEntryItem = AllocateZeroPool(sizeof(REFIT_MENU_ENTRY)); // do not free
             MenuEntryItem->Title = StrDuplicate(OneElement);
@@ -1723,8 +1723,8 @@ static VOID HideTag(REFIT_MENU_ENTRY *ChosenEntry) {
     LOADER_ENTRY       *Loader = (LOADER_ENTRY *) ChosenEntry;
     LEGACY_ENTRY       *LegacyLoader = (LEGACY_ENTRY *) ChosenEntry;
     REFIT_MENU_SCREEN  HideItemMenu = { NULL, NULL, 0, NULL, 0, NULL, 0, NULL,
-                                        L"Select an option and press Enter or",
-                                        L"press Esc to return to main menu without changes" };
+                                        L"Select an option and press (A) or",
+                                        L"press (B) to return to main menu without changes" };
 
     if (ChosenEntry == NULL)
         return;

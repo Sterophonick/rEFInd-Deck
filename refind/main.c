@@ -86,9 +86,9 @@
 REFIT_MENU_ENTRY MenuEntryReturn   = { L"Return to Main Menu", TAG_RETURN, 1, 0, 0, NULL, NULL, NULL };
 
 REFIT_MENU_SCREEN MainMenu       = { L"Main Menu", NULL, 0, NULL, 0, NULL, 0, L"Automatic boot",
-                                     L"Use arrow keys to move cursor; Enter to boot;",
-                                     L"Insert, Tab, or F2 for more options; Esc or Backspace to refresh" };
-static REFIT_MENU_SCREEN AboutMenu      = { L"About", NULL, 0, NULL, 0, NULL, 0, NULL, L"Press Enter to return to main menu", L"" };
+                                     L"Use D-Pad to move cursor; (A) to boot;",
+                                     L"(Back) for more options; (B) to refresh" };
+static REFIT_MENU_SCREEN AboutMenu      = { L"About", NULL, 0, NULL, 0, NULL, 0, NULL, L"Press (A) to return to main menu", L"" };
 
 REFIT_CONFIG GlobalConfig = { /* TextOnly = */ FALSE,
                               /* ScanAllLinux = */ TRUE,
